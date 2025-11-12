@@ -30,4 +30,21 @@ else
 	echo "Press CTRL+ALT+F1 if you're seeing this" | tee /dev/tty2 /dev/tty3 >/dev/tty4
 fi
 
+printf "\033[?25l\033[2J\033[H"
+
+block_char=$(printf "\xe2\x96\x88")
+echo "Ck9PT08gICBPT08gIE9PT08gIE9PT08gIE9PT09PICBPT09PICBPT08gIE8gICBPIE9PT09PIE9PT08gIE8gICBPCk8gICBPIE8gICBPIE8gICBPIE8gICBPIE8gICAgIE8gICAgIE8gICBPIE8gICBPIE8gICAgIE8gICBPICBPIE8gCk9PT08gIE9PT09PIE8gICBPIE9PT08gIE9PT08gIE8gICAgIE8gICBPIE8gICBPIE9PT08gIE9PT08gICAgTyAgCk8gICBPIE8gICBPIE8gICBPIE8gICBPIE8gICAgIE8gICAgIE8gICBPICBPIE8gIE8gICAgIE8gICBPICAgTyAgCk9PT08gIE8gICBPIE9PT08gIE8gICBPIE9PT09PICBPT09PICBPT08gICAgTyAgIE9PT09PIE8gICBPICAgTyAgCgo=" | base64 -d | sed "s/O/$block_char/g"
+
+echo "Welcome to BadRecovery (unverified)"
+echo "Script date: $SCRIPT_DATE"
+echo "https://github.com/BinBashBanana/badrecovery"
+echo ""
+
+if [ $HAS_FRECON -eq 1 ]; then
+	printf "\033]input:on\a"
+else
+	stty echo
+fi
+
+printf "\033[?25h"
 while :; do sh; done
