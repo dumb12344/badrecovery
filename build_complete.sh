@@ -86,7 +86,7 @@ if [ ! "$image_variants" ]; then
   cp "$image_bin_file" "$out_file"
 
   echo "building badrecovery"
-  ./build_badrecovery.sh -i "$out_file"
+  ./build_badrecovery.sh -i "$out_file" -t unverified
   echo "done! the finished image is located at $out_file"
 
 else
@@ -96,7 +96,7 @@ else
     cp "$image_bin_file" "$out_file"
 
     echo "building badrecovery (internal_disk=$variant)"
-    ./build_badrecovery.sh -i "$out_file" --internal_disk="$variant"
+    ./build_badrecovery.sh -i "$out_file" --internal_disk="$variant" -t unverified
     echo "done! the finished image is located at $out_file"
   done
 fi
